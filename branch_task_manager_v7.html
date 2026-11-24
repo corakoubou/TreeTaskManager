@@ -111,7 +111,8 @@ function downloadOnedayCsv() {
       if (!Number.isSafeInteger(node.minutes) || node.minutes < 0) {
         throw new Error('「' + taskName + '」の作業時間を0以上の整数（分）にしてください。');
       }
-      rows.push(['', '', '', node.minutes, taskName, '', '']);
+      const startTime = rows.length === 1 ? '00:00' : '';
+      rows.push(['', startTime, '', node.minutes, taskName, 'ON', '']);
     }
   }
   try {
